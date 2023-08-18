@@ -20,9 +20,9 @@ export default function ModalPage() {
         open
       </button>
       {openModal && (
-        <Portal selector="modal-portal">
+        <Portal selector="#modal-portal">
           <Modal>
-            <div>
+            <div className="p-5 rounded-xl">
               <h1>Modal</h1>
               <button
                 onClick={close}
