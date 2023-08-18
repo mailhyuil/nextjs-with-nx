@@ -28,6 +28,7 @@ export default function Child(props: {
   const onClick = () => {
     props.setAge(props.age + 1);
   };
+
   return (
     <div>
       <div>Child : {props.name}</div>

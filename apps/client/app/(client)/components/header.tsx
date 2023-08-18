@@ -23,6 +23,18 @@ export default function Header() {
           >
             TEST
           </Link>
+          <Link
+            href={'/fetch'}
+            className="font-bold hover:text-yellow-500 hover:cursor-pointer transition-all duration-300 "
+          >
+            FETCH
+          </Link>
+          <Link
+            href={'/modal'}
+            className="font-bold hover:text-yellow-500 hover:cursor-pointer transition-all duration-300 "
+          >
+            MODAL
+          </Link>
         </ul>
       </nav>
     </header>
