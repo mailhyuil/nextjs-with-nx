@@ -23,7 +23,7 @@ export default function ModalPage() {
         Click to Enter
       </button>
 
-      <Modal openModal={openModal}>
+      <Modal isOpen={openModal} setIsOpen={setOpenModal}>
         <div className="flex flex-col gap-2 w-96 items-center">
           <div>
             <h1 className="font-bold">MODAL</h1>
