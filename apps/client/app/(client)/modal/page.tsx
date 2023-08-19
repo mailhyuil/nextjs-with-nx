@@ -1,9 +1,8 @@
 'use client';
-import { useRef, useState } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import { useState } from 'react';
+import Modal from '../components/modal';
 export default function ModalPage() {
   const [openModal, setOpenModal] = useState(false);
-  const nodeRef = useRef(null);
   const open = () => {
     setOpenModal(true);
   };
@@ -20,17 +19,25 @@ export default function ModalPage() {
   };
   return (
     <div>
-      <CSSTransition
-        nodeRef={nodeRef}
-        in={openModal}
-        timeout={1000}
-        classNames={classNames}
-      >
-        <div ref={nodeRef}>{"I'll receive my-node-* classes"}</div>
-      </CSSTransition>
-      <button type="button" onClick={() => setOpenModal((value) => !value)}>
+      <button type="button" onClick={open}>
         Click to Enter
       </button>
+
+      <Modal openModal={openModal}>
+        <div className="flex flex-col gap-2 w-96 items-center">
+          <div>
+            <h1 className="font-bold">MODAL</h1>
+          </div>
+          <p>안녕하세요</p>
+          <button
+            className="border rounded-xl  bg-gray-50 px-2 py-1"
+            type="button"
+            onClick={close}
+          >
+            close
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }
