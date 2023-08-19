@@ -1,39 +1,36 @@
 'use client';
-import { useState } from 'react';
-import Modal from '../components/modal';
-import Portal from '../components/portal';
-
+import { useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 export default function ModalPage() {
   const [openModal, setOpenModal] = useState(false);
+  const nodeRef = useRef(null);
   const open = () => {
     setOpenModal(true);
   };
   const close = () => {
     setOpenModal(false);
   };
+  const classNames = {
+    appear: 'opacity-0',
+    appearActive: 'transition-opacity duration-300 opacity-100',
+    enter: 'opacity-0',
+    enterActive: 'transition-opacity duration-300 opacity-100',
+    // exit: "opacity-100",  // this breaks the exit transition
+    exitActive: 'transition-opacity duration-200 opacity-0',
+  };
   return (
     <div>
-      <button
-        onClick={open}
-        className="bg-gray-50 border-gray-100 px-2 py-1 rounded-md cursor-pointer"
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={openModal}
+        timeout={1000}
+        classNames={classNames}
       >
-        open
+        <div ref={nodeRef}>{"I'll receive my-node-* classes"}</div>
+      </CSSTransition>
+      <button type="button" onClick={() => setOpenModal((value) => !value)}>
+        Click to Enter
       </button>
-      {openModal && (
-        <Portal selector="#modal-portal">
-          <Modal>
-            <div className="p-5 rounded-xl">
-              <h1>Modal</h1>
-              <button
-                onClick={close}
-                className="bg-gray-50 border-gray-100 px-2 py-1 rounded-md cursor-pointer"
-              >
-                close
-              </button>
-            </div>
-          </Modal>
-        </Portal>
-      )}
     </div>
   );
 }
