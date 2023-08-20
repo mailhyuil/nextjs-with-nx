@@ -9,18 +9,14 @@ export default function ModalPage() {
   const close = () => {
     setOpenModal(false);
   };
-  const classNames = {
-    appear: 'opacity-0',
-    appearActive: 'transition-opacity duration-300 opacity-100',
-    enter: 'opacity-0',
-    enterActive: 'transition-opacity duration-300 opacity-100',
-    // exit: "opacity-100",  // this breaks the exit transition
-    exitActive: 'transition-opacity duration-200 opacity-0',
-  };
   return (
     <div>
-      <button type="button" onClick={open}>
-        Click to Enter
+      <button
+        className="border rounded-xl  bg-gray-50 px-2 py-1"
+        type="button"
+        onClick={open}
+      >
+        open
       </button>
 
       <Modal isOpen={openModal} setIsOpen={setOpenModal}>
